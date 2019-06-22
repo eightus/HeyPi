@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% include 'include/title.html' %}
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/dist/css/bootstrap.min.css') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome-v5/css/all.min.css') }}">
+    <!-- Google Charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- Custom Theme Style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='build/css/custom.min.css') }}">
+
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+
+                {% include 'include/nav_title.html' %}
+
+                <div class="clearfix"></div>
+
+                {% include 'include/menu.html' %}
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        {% include 'include/top_navigation.html' %}
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="row top_tiles">
+                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12" id="temperature_update"
+                         style="cursor: pointer">
+                        <div class="tile-stats">
+                            <div class="icon"><i class="fa fa-thermometer-half"></i></div>
+                            <div class="count" id="temperature_value">{{ session.temperature }}</div>
+                            <h3>Temperature</h3>
+                            <p id="temperature_time">{{ session.time }}</p>
+                        </div>
+                    </div>
+                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12" id="brightness_update"
+                         style="cursor: pointer">
+                        <div class="tile-stats">
+                            <div class="icon"><i class="far fa-sun"></i></div>
+                            <div class="count" id="brightness_value">{{ session.brightness }}</div>
+                            <h3>Brightness</h3>
+                            <p id="brightness_time">{{ session.time }}</p>
+                        </div>
+                    </div>
+                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12" id="humidity_update"
+                         style="cursor: pointer">
+                        <div class="tile-stats">
+                            <div class="icon"><i class="fas fa-tint"></i></div>
+                            <div class="count" id="humidity_value">{{ session.humidity }}</div>
+                            <h3>Humidity</h3>
+                            <p id="humidity_time">{{ session.time }}</p>
+                        </div>
+                    </div>
+                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12" id="led_update"
+                         style="cursor: pointer">
+                        <div class="tile-stats">
+                            <div class="icon"><i class="far fa-lightbulb"></i></div>
+                            <div class="count" id="led_value">Off</div>
+                            <h3>LED</h3>
+                            <p id="led_time">{{ session.time }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Logs</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+
+                                <div id="chat_table"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        {% include 'include/footer.html' %}
+        <!-- /footer content -->
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src="{{ url_for('static', filename='jquery/dist/jquery.min.js') }}"></script>
+<!-- Bootstrap -->
+<script src="{{ url_for('static', filename='bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<!-- Custom Theme Scripts -->
+<script src="{{ url_for('static', filename='build/js/custom.js') }}"></script>
+<!-- Javascript Function Augustus -->
+<script src="{{ url_for('static', filename='extrafunction.js') }}"></script>
+</body>
+</html>
+

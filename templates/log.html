@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% include 'include/title.html' %}
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/dist/css/bootstrap.min.css') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome-v5/css/all.min.css') }}">
+    <!-- ChartJS -->
+    <script src="{{ url_for('static', filename='chartjs/chart.js/dist/Chart.bundle.min.js') }}"></script>
+    <!-- Datatables -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='DataTables/datatables.min.css') }}"/>
+    <!-- Custom Theme Style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='build/css/custom.min.css') }}">
+
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+
+                {% include 'include/nav_title.html' %}
+
+                <div class="clearfix"></div>
+
+                <!-- sidebar menu -->
+                {% include 'include/menu.html' %}
+                <!-- /menu footer buttons -->
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        {% include 'include/top_navigation.html' %}
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>All Logs</h2>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="x_content">
+
+                                <table id="datatable-responsive"
+                                       class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
+                                       width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Chat</th>
+                                        <th>Status</th>
+                                        <th>Date | Time</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for logDict in full_log %}
+                                        <tr>
+                                            {% for logValue in logDict.values() %}
+                                                <td>
+                                                    {{ logValue }}
+                                                </td>
+                                            {% endfor %}
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        {% include 'include/footer.html' %}
+        <!-- /footer content -->
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src="{{ url_for('static', filename='jquery/dist/jquery.min.js') }}"></script>
+<!-- Bootstrap -->
+<script src="{{ url_for('static', filename='bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<!-- Datatables -->
+<script type="text/javascript" src="{{ url_for('static', filename='DataTables/datatables.min.js') }}"></script>
+<!-- Custom Theme Scripts -->
+<script src="{{ url_for('static', filename='build/js/custom.min.js') }}"></script>
+</body>
+</html>
+

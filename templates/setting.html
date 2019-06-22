@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% include 'include/title.html' %}
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/dist/css/bootstrap.min.css') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome-v5/css/all.min.css') }}">
+    <!-- PNotify -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='pnotify/dist/pnotify.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pnotify/dist/pnotify.buttons.css') }}">
+    <!-- Custom Theme Style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='build/css/custom.min.css') }}">
+
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+
+                {% include 'include/nav_title.html' %}
+
+                <div class="clearfix"></div>
+
+                <!-- sidebar menu -->
+                {% include 'include/menu.html' %}
+                <!-- /menu footer buttons -->
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        {% include 'include/top_navigation.html' %}
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Condition
+                                    <small>Add Condition</small>
+                                </h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+
+                                <form class="form-horizontal form-label-left" method="POST" data-parsley-validate>
+
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="speech">Speech
+                                            Input
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="speech" name="speech" class="form-control col-md-7 col-xs-12"
+                                                   minlength="0" maxlength="100"
+                                                   placeholder="e.g. ping" required="required"
+                                                   type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="item form-group">
+                                        <label class="col-md-3 col-sm-3 col-xs-12 control-label">Type</label>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" class="flat" value="exact" checked name="type">
+                                                    Exact Match
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" class="flat" value="contain" name="type">
+                                                    Contain In Text
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="item form-group">
+                                        <label class="col-md-3 col-sm-3 col-xs-12 control-label">Action</label>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" class="flat" value="temperature" checked
+                                                           name="action"> Temperature
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" class="flat" value="brightness" name="action">
+                                                    Brightness
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" class="flat" value="humidity" name="action">
+                                                    Humidity
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" class="flat" value="led" name="action"> Toggle
+                                                    LED
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" class="flat" value="camera" name="action">
+                                                    Camera
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" class="flat" value="speak" name="action"> Speak
+                                                    (Enter Text Below)
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="speech_out">Speech
+                                            Output
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="speech_out" name="speech_out"
+                                                   class="form-control col-md-7 col-xs-12"
+                                                   minlength="0" maxlength="100"
+                                                   placeholder="e.g. pong (if Speak is checked)" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="ln_solid"></div>
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <button id="send" type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Condition
+                                    <small>Delete Condition</small>
+                                </h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+
+                                <form class="form-horizontal form-label-left" method="POST" data-parsley-validate>
+
+                                    <div class="item form-group">
+                                        <label class="col-md-3 col-sm-3 col-xs-12 control-label">Conditions</label>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            {% for k, v in condition.items() %}
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" class="flat" value="{{ k }}" name="cd">
+                                                        {{ v }}
+                                                    </label>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <div class="ln_solid"></div>
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <button id="send" type="submit" class="btn btn-danger">Delete</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Advance Settings
+                                    <small>Restart Required</small>
+                                </h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+
+                                <form class="form-horizontal form-label-left" method="POST" data-parsley-validate>
+
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3" for="dht11">DHT11 Sensor GPIO Pin
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="dht11" name="dht11" class="form-control col-md-7 col-xs-12"
+                                                   placeholder="{{ config['dht11'] }}"
+                                                   type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3" for="button">Button GPIO Pin
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="button" name="button" class="form-control col-md-7 col-xs-12"
+                                                   placeholder="{{ config['button'] }}"
+                                                   type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3" for="LED">LDR GPIO Channel
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="brightness" name="brightness"
+                                                   class="form-control col-md-7 col-xs-12"
+                                                   placeholder="{{ config['brightness'] }}"
+                                                   type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3" for="LED">LED GPIO Pin</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="LED" name="LED" class="form-control col-md-7 col-xs-12"
+                                                   placeholder="{{ config['LED'] }}"
+                                                   type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3" for="speech_pitch">Speech Pitch
+                                            (0-100)</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="speech_pitch" name="speech_pitch"
+                                                   class="form-control col-md-7 col-xs-12"
+                                                   placeholder="{{ config['speech_pitch'] }}"
+                                                   type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3" for="speech_speed">Speech Speed</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="speech_speed" name="speech_speed"
+                                                   class="form-control col-md-7 col-xs-12"
+                                                   placeholder="{{ config['speech_speed'] }}"
+                                                   type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="item form-group">
+                                        <label class="col-md-3 col-sm-3 col-xs-12 control-label">Speech Gender</label>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            {% if config['speech_gender'] == 'female' %}
+                                                <div class="radio">
+
+                                                    <label>
+                                                        <input type="radio" class="flat" value="female" checked
+                                                               name="speech_gender"> Female
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" class="flat" value="male"
+                                                               name="speech_gender">
+                                                        Male
+                                                    </label>
+                                                </div>
+                                            {% else %}
+                                                <div class="radio">
+
+                                                    <label>
+                                                        <input type="radio" class="flat" value="female"
+                                                               name="speech_gender"> Female
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" class="flat" value="male"
+                                                               name="speech_gender" checked>
+                                                        Male
+                                                    </label>
+                                                </div>
+                                            {% endif %}
+
+                                        </div>
+                                    </div>
+
+                                    <div class="item form-group">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            * Restart is required
+                                        </div>
+                                    </div>
+
+                                    <div class="ln_solid"></div>
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <button id="send" type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        {% include 'include/footer.html' %}
+        <!-- /footer content -->
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src="{{ url_for('static', filename='jquery/dist/jquery.min.js') }}"></script>
+<!-- Bootstrap -->
+<script src="{{ url_for('static', filename='bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<!-- PNotify -->
+<script src="{{ url_for('static', filename='pnotify/dist/pnotify.js') }}"></script>
+<script src="{{ url_for('static', filename='pnotify/dist/pnotify.buttons.js') }}"></script>
+<!-- ParsleyJS -->
+<script src="{{ url_for('static', filename='parsley/parsley.min.js') }}"></script>
+<!-- Custom Theme Scripts -->
+<script src="{{ url_for('static', filename='build/js/custom.js') }}"></script>
+<!-- Custom JS Scripts -->
+<script>
+    {% if status == 'success' %}
+        $(document).ready(function () {
+            (new PNotify({
+                title: 'Success',
+                text: '{{ data }}',
+                type: 'success',
+                buttons: {
+                    sticker: false
+                },
+                styling: 'bootstrap3'
+            }));
+        });
+    {% elif status == 'fail' %}
+        $(document).ready(function () {
+            (new PNotify({
+                title: 'Failed',
+                text: '{{ data }}',
+                type: 'error',
+                buttons: {
+                    sticker: false
+                },
+                styling: 'bootstrap3'
+            }));
+        });
+    {% endif %}
+</script>
+
+</body>
+</html>
