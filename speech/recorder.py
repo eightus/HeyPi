@@ -1,5 +1,6 @@
 import threading
 import wave
+import os
 
 import pyaudio
 import speech_recognition as sr
@@ -24,11 +25,12 @@ class Record:
         self.check = False
 
     def record(self):
+        dir_path = os.path.dirname(os.path.realpath(__file__))
         chunk = 512  # Record in chunks of 512 samples
         sample_format = pyaudio.paInt16  # 16 bits per sample
         channels = 1
         fs = 44100  # Record at 44100 samples per second
-        filename = "output.wav"
+        filename = dir_path + "/output.wav"
 
         p = pyaudio.PyAudio()  # Create an interface to PortAudio
 
@@ -62,7 +64,7 @@ class Record:
         wf.close()
 
         print('Finished recording')
-        self.process_record('output.wav')
+        self.process_record(dir_path + '/output.wav')
 
     def process_record(self, input_file):
         file = sr.AudioFile(input_file)

@@ -133,6 +133,11 @@ class Database:
         return True
 
     def insert_chat_condition(self, text, match_type, action):
+        check = self.get_condition()
+
+        for i in check:
+            if i['match'] == text and i['type'] == match_type and i['action'] == action:
+                return False
         cur = self.conn.cursor()
         cur.execute("INSERT INTO chat_condition (`match`, `type`, `action`) VALUES (%s, %s, %s)",
                     [text, match_type, action])
