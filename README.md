@@ -13,7 +13,9 @@ alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 ### 1. Setting up the Raspberri pi
 
-Setting up of the Raspberri pi is rather straight forward.
+Setting up of the Raspberri pi is rather straight forward. The end result of this section will be something like this
+
+![Finished](/images/finished.jpg)
 
 Do ensure the following sensors, resistors and amount of cables are present before setting up
 
@@ -21,23 +23,50 @@ Do ensure the following sensors, resistors and amount of cables are present befo
 - 1 x LED 
 - 1 x  MCP3008 ADC
 - 1 x  Light sensitive resistor
+- 1 x button
+- 2 x Resistor 
+- 2 x Resistor
 
 A fritzing.jpg attached on this github. The exact replication will be required to be setup in order for the application to work without any issues.
+
+![Fritzing diagram](/images/Fritzing.png)
 
 ### 2. Installation of required Modules
 
 * Required apt-get modules
+  * adafruit_dht
+  - espeak
+  - mosquitto mosquitto-clients
+  - python3
+  - python3-dev
+  - python3-pyaudio
 * Required pip3 modules
+  * adafruit_dht
+  - contextlib2
+  - cryptography
+  - espeak
+  - flaky
+  - flask
+  - gcp-devrel-py-tools
+  - google-auth
+  - google-auth-httplib2
+  - google-cloud-pubsub
+  - google-cloud-storage
+  - google-cloud-tools
+  - gpiozero
+  - mysql-connector-python
+  - oauth2
+  - oauth2Client
+  - picamera
+  - pyjwt
+  - wave
 
 ### 3. Running the Software
 
-Run the .py application with the following arguments -u Your chosen username -p your chosen password
-
-Do note the passsword and username entered will be used on the web interface later.
-
-
-
-### 4. Troubleshooting
-
-
-
+1. Run the pi.py application with the following arguments **e.g (pi.py -u user - p password123)** The application will automatically generate an RSA key and establish as well as create an account on our web **Do note the password and username entered will be used on the web interface later.**
+2. Log onto the web interface at http://heypi-iot.appspot.com/login
+3. Voice Record function
+   - Press and Hold button
+   - Speak into mic
+   - Release the button
+4. Once the voice message is recorded the program will upload it into the cloud storage and all other pi subscribed to the MQTT topic will receive and download the voice file from the cloud storage
