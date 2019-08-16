@@ -15,7 +15,7 @@ alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 Setting up of the Raspberri pi is rather straight forward. The end result of this section will be something like this
 
-![Finished](/images/finished.jpg?raw=true)
+![Finished](finished.jpg?raw=true)
 
 Do ensure the following sensors, resistors and amount of cables are present before setting up
 
@@ -30,7 +30,7 @@ Do ensure the following sensors, resistors and amount of cables are present befo
 
 A fritzing.jpg attached on this github. The exact replication will be required to be setup in order for the application to work without any issues.
 
-![Fritzing diagram](/images/Fritzing.png?raw=true)
+![Fritzing diagram](Fritzing.png?raw=true)
 
 ### 2. Installation of required Modules
 
