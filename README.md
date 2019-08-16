@@ -15,7 +15,7 @@ alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 Setting up of the Raspberri pi is rather straight forward. The end result of this section will be something like this
 
-![Finished](/images/finished.jpg)
+![Finished](/images/finished.jpg?raw=true)
 
 Do ensure the following sensors, resistors and amount of cables are present before setting up
 
@@ -24,12 +24,13 @@ Do ensure the following sensors, resistors and amount of cables are present befo
 - 1 x  MCP3008 ADC
 - 1 x  Light sensitive resistor
 - 1 x button
-- 2 x Resistor 
-- 2 x Resistor
+- 2 x Resistor  10k ohms
+- 2 x Resistor 330 ohms 
+- 22 x wires 
 
 A fritzing.jpg attached on this github. The exact replication will be required to be setup in order for the application to work without any issues.
 
-![Fritzing diagram](/images/Fritzing.png)
+![Fritzing diagram](/images/Fritzing.png?raw=true)
 
 ### 2. Installation of required Modules
 
@@ -70,3 +71,5 @@ A fritzing.jpg attached on this github. The exact replication will be required t
    - Speak into mic
    - Release the button
 4. Once the voice message is recorded the program will upload it into the cloud storage and all other pi subscribed to the MQTT topic will receive and download the voice file from the cloud storage
+5. Dashboard will update itself periodically based on the MQTT transmissions from the pi. 
+6. An LED can be turned on and off on the dashboard by clicking.
