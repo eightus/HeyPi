@@ -157,6 +157,18 @@ Realtime Graphs:
 
 ![architecture](./Images/architecture.png?raw=true)
 
+The entire architecture of Heypi is very straight forward and simple.
+
+1. Regular Pub/Sub data for Temperature,humidity,light and LED
+   - The cloud pub/sub service acts as the central broker for all MQTT communications from the rapspberri pi(s) to the cloud. 
+   - Once a message is received on the pub/sub cloud service, it will trigger a serverless cloud function which processes the data and then uploads it to the cloud SQL server.
+   - This data will then be used to display on the web app.
+   - The web App can also publish commands to the cloud pub/sub service triggering the LED on the Raspberri pi(s)
+2. Upload voice 
+   - Once a voice recording has been done, the Raspberri pi will then upload the wav file to the cloud storage. 
+   - The cloud storage will then trigger a serverless function which publishes a message to the cloud pub/sub service.
+   - This message is then sent to the Raspberri pi(s) which they will then download the voice from the cloud storage.
+
 ### 9. How HeyPi Works
 
 1. When the button is pressed, HeyPi will spawn a thread to start a recording of audio with the help of the PyAudio libary (a library that allows recording with python)
