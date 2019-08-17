@@ -143,15 +143,15 @@ Voice command conditions can be configured and added through the web interface. 
 
 The login page of heypi:
 
-![Fritzing diagram](./Images/login.png?raw=true)
+![Login Page](./Images/login.PNG?raw=true)
 
 Dashboard:
 
-![Fritzing diagram](./Images/dashboard.png?raw=true)
+![Dashboard](./Images/dashboard.PNG?raw=true)
 
 Realtime Graphs:
 
-![Fritzing diagram](./Images/realtime.png?raw=true)
+![RealTime Graph](./Images/realtime.PNG?raw=true)
 
 ### 8. Architecture
 
