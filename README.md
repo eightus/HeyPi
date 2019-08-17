@@ -122,7 +122,7 @@ HeyPi is coded in Python3 instead of Python2 due to Python2 is going to be depre
 
 6. An LED can be turned on and off on the dashboard by clicking and/or speaking into the microphone.
 
-### 6. Voice Commands
+### 6. Voice Command mode
 
 By default, when a new user is created, a few voice command will be added.
 
@@ -135,13 +135,23 @@ By default, when a new user is created, a few voice command will be added.
 - If `broadcast` contains in the audio, Raspberry Pi will send the audio to all other devices
 - If `voicemail` contains in the audio, Raspberry Pi will play all audio that are received from other devices.
 
-Voice command conditions can be configured and added through the web interface. It is highly customisable which allow users to choose and type any voices condition they like. Users can also make the Raspberry Pi to reply custom replies base on their likings.
+Voice command conditions can be configured and added through the web interface. It is highly customizable which allow users to choose and type any voices condition they like. Users can also make the Raspberry Pi reply custom replies base on their liking.
 
 
 
 ### 7. Web Interface
 
-< screenshots >
+The login page of heypi:
+
+![Fritzing diagram](./Images/login.png?raw=true)
+
+Dashboard:
+
+![Fritzing diagram](./Images/dashboard.png?raw=true)
+
+Realtime Graphs:
+
+![Fritzing diagram](./Images/realtime.png?raw=true)
 
 ### 8. Architecture
 
@@ -149,21 +159,13 @@ Voice command conditions can be configured and added through the web interface. 
 
 ### 9. How HeyPi Works
 
-1. When the button is pressed, HeyPi will spawn a thread to start recording the audio with the help of PyAudio (a library that allows recording with python)
+1. When the button is pressed, HeyPi will spawn a thread to start a recording of audio with the help of the PyAudio libary (a library that allows recording with python)
 2. Once the button is released, HeyPi will output the audio to a file called output.wav
 3. The program will then process the audio file and interpret the speech from the user
-4. Once the speech is confirmed, it will move on to compare the speech with conditions that was given by the user
-5. Lastly, once the condition is met, an action will be done to responds to the user.
+4. Once the speech is confirmed, it will move on to compare the speech with conditions that was specified by the user
+5. Lastly, once the condition is met, an action will be done to respond to the user.
 
-### 10. Basic Requirement Evidence
-
-
-
-
-
-
-
-### 11. Bonus Feature
+### 10. Bonus Feature
 
 - One Click Run Script
 - Serverless Function on Google Cloud
@@ -180,28 +182,26 @@ Voice command conditions can be configured and added through the web interface. 
 - Password is hashed for security
 - A login system
 
-### 12. Quick-Start Guide
+### 11. Quick-Start Guide
 
-1. Connect an USB audio input
+1. Connect a USB audio input
 2. Connect a 3.5mm jack audio output
 3. Run pi.py
    - `sudo python3 pi.py -u <username> -p <password>`
      - For first time user
    - `sudo python3 pi.py`
-4. Hold the button on Raspberry Pi
+4. Hold the button on the Raspberry Pi
 5. Start Talking!
-6. Release the button to get reply
+6. Release the button to get a reply
 
 To ease the convenience of user, the source code is packaged into one!
 
 - Audio Input MUST be USB
-  - Raspberry Pi default does not have an audio input. The 3.5mm jack only supports audio output.
+  - Raspberry Pi by default does not have an audio input. The 3.5mm jack only supports audio output.
 - Audio Output MUST be 3.5mm jack
-  - Through multiple test, the Raspberry Pi is configured to output audio to only either the 3.5mm jack or Bluetooth.
+  - Through multiple tests, the Raspberry Pi is configured to output audio to only either the 3.5mm jack or Bluetooth. However there is no bluetooth module by default on the pi
 
-
-
-### 13. Reference
+### 12. Reference
 
 Amos, D. (2018). *The Ultimate Guide To Speech Recognition With Python – Real Python*. [online] Realpython.com. Available at: https://realpython.com/python-speech-recognition/ [Accessed 20 Jun. 2019].
 
