@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% include 'include/title.html' %}
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/dist/css/bootstrap.min.css') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome-v5/css/all.min.css') }}">
+    <!-- PNotify -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='pnotify/dist/pnotify.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pnotify/dist/pnotify.buttons.css') }}">
+    <!-- Custom Theme Style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='build/css/custom.min.css') }}">
+
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+
+                {% include 'include/nav_title.html' %}
+
+                <div class="clearfix"></div>
+
+                <!-- sidebar menu -->
+                {% include 'include/menu.html' %}
+                <!-- /menu footer buttons -->
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        {% include 'include/top_navigation.html' %}
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Registration
+                                    <small>Add New User</small>
+                                </h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+
+                                <form class="form-horizontal form-label-left" method="POST" data-parsley-validate>
+
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3" for="username">Username
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="username" name="username" class="form-control col-md-7 col-xs-12"
+                                                   minlength="6" maxlength="20"
+                                                   placeholder="e.g. user0308" required="required"
+                                                   type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="item form-group">
+                                        <label for="password" class="control-label col-md-3">Password
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="password" name="password" class="form-control col-md-7 col-xs-12"
+                                                   minlength="6" maxlength="20"
+                                                   required="required"
+                                                   type="password">
+                                        </div>
+                                    </div>
+
+                                    <div class="item form-group">
+                                        <label for="repeat_password" class="control-label col-md-3">Repeat Password
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="repeat_password" class="form-control col-md-7 col-xs-12"
+                                                   minlength="6" maxlength="20"
+                                                   required="required"
+                                                   type="password"
+                                                   data-parsley-equalto="#password">
+                                        </div>
+                                    </div>
+
+                                    <div class="item form-group">
+                                        <label for="number" class="control-label col-md-3">Number
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="number" name="number" class="form-control col-md-7 col-xs-12"
+                                                   minlength="8" maxlength="8"
+                                                   required="required"
+                                                   type="number">
+                                        </div>
+                                    </div>
+
+                                    <div class="ln_solid"></div>
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <button id="send" type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        {% include 'include/footer.html' %}
+        <!-- /footer content -->
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src="{{ url_for('static', filename='jquery/dist/jquery.min.js') }}"></script>
+<!-- Bootstrap -->
+<script src="{{ url_for('static', filename='bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<!-- PNotify -->
+<script src="{{ url_for('static', filename='pnotify/dist/pnotify.js') }}"></script>
+<script src="{{ url_for('static', filename='pnotify/dist/pnotify.buttons.js') }}"></script>
+<!-- ParsleyJS -->
+<script src="{{ url_for('static', filename='parsley/parsley.min.js') }}"></script>
+<!-- Custom Theme Scripts -->
+<script src="{{ url_for('static', filename='build/js/custom.js') }}"></script>
+<!-- Custom JS Scripts -->
+<script>
+    {% if status == 'success' %}
+        $(document).ready(function () {
+            (new PNotify({
+                title: 'Registration Success',
+                text: 'User {{ new_user }} Is Created',
+                type: 'success',
+                buttons: {
+                    sticker: false
+                },
+                styling: 'bootstrap3'
+            }));
+        });
+    {% elif status == 'fail' %}
+        $(document).ready(function () {
+            (new PNotify({
+                title: 'Registration Failed',
+                text: 'User {{ new_user }} Exist / Number Exist',
+                type: 'error',
+                buttons: {
+                    sticker: false
+                },
+                styling: 'bootstrap3'
+            }));
+        });
+    {% endif %}
+</script>
+
+</body>
+</html>
