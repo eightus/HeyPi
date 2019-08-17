@@ -155,7 +155,7 @@ Realtime Graphs:
 
 ### 8. Architecture
 
-< i later do >
+![architecture](./Images/architecture.png?raw=true)
 
 ### 9. How HeyPi Works
 
