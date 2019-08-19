@@ -7,10 +7,10 @@ import os
 import json
 from gpiozero import LED
 
-_LED = LED(20)
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/pi/Downloads/resource/service_account.json"
-print('Added Environment Variable')
 dir_path = os.path.dirname(os.path.realpath(__file__))
+_LED = LED(20)
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "{}/../resource/service_account.json".format(dir_path)
+print('Added Environment Variable')
 with open('{}/../resource/uid.txt'.format(dir_path), 'r') as f:
     DEVICE_ID = f.read()
 
