@@ -11,10 +11,9 @@
 7. Web Interface
 8. Architecture
 9. How HeyPi Works
-10. Basic Requirement Evidence
-11. Bonus Feature
-12. Quick-Start Guide
-
+10. Bonus Feature
+11. Quick-Start Guide
+12. References
 
 
 ### 1. Introduction
