@@ -23,8 +23,8 @@ Heypi is a project done as an experiment which has a voice chat system that util
 A Youtube link of our project can be found at 
 
 ```
-<a href="" target="_blank"><img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+<a href="https://youtu.be/nbB8fvW2Kz4" target="_blank"><img src="http://img.youtube.com/vi/nbB8fvW2Kz4/0.jpg" 
+alt="HeyPi IoT Assignment" width="240" height="180" border="10" /></a>
 ```
 
 ### 2. Hardware Requirements
