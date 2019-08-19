@@ -172,6 +172,7 @@ def main():
         time.sleep(5)
 
 if __name__ == '__main__':
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/pi/Downloads/resource/service_account.json"
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "{}/resource/service_account.json".format(dir_path)
     print('Added Environment Variable')
     main()
