@@ -20,12 +20,10 @@
 
 Heypi is a project done as an experiment which has a voice chat system that utilizes cloud services to carry out its functions. With the implementation of IOT products such as DHT and light sensors Heypi is able to offer more than just a typical voice chat application. Real time reports of the temperature and light can be seen, in future implementation of heypi we can make both end users of the application understand the other client's environment more. 
 
-A Youtube link of our project can be found at 
-
+A Youtube link of our project can be found below. (Click on the Image)
 
 <a href="https://youtu.be/nbB8fvW2Kz4" target="_blank"><img src="http://img.youtube.com/vi/nbB8fvW2Kz4/0.jpg" 
 alt="HeyPi IoT Assignment" width="240" height="180" border="10" /></a>
-
 
 ### 2. Hardware Requirements
 
